@@ -1,0 +1,57 @@
+<div class="product-details">
+    <h2>Products</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Discount Percentage</th>
+                <th>Rating</th>
+                <th>Stock</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Thumbnail</th>
+                <th>Images</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let productDetails of productDetails">
+                    <td>{{ productDetails.title }}</td>
+                    <td>{{ productDetails.description }}</td>
+                    <td>{{ productDetails.price }}</td>
+                    <td>{{ productDetails.discountPercentage }}</td>
+                    <td>{{ productDetails.rating}}</td>
+                    <td>{{productDetails.stock}}</td>
+                    <td>{{ productDetails.brand }}</td>
+                    <td>{{ productDetails.category }}</td>
+                    <td>{{ productDetails.thumbnail}}</td>
+                    <td>{{productDetails.images}}</td>
+                    
+                </tr>      
+        </tbody>
+    </table>
+</div>
+<button onclick="history.back()">Go Back</button>
+<style>
+    .product-details {
+        margin: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
