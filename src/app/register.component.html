@@ -1,0 +1,143 @@
+<style>
+    h1{
+        text-align: center;
+        color: #7DEF0B;
+        font-size: 1.75rem;
+    }
+   
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  max-width: 400px; 
+  margin: 0 auto; 
+}
+*{
+        box-sizing: border-box;
+    }
+label{
+  font-size: 1rem;
+  color:#C0F090;
+}
+/* Full-width input fields */
+input[type=text]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+  background-color: #e5770f;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+/* .signin {
+  background-color: #f1f1f1;
+  text-align: center;
+} */
+
+</style>
+<h1>Registration Form</h1>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<div class="form-group">
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" name="name" formControlName="name" id="name" required>
+    <div *ngIf="registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched" style="color: red;">
+      Name is required.
+    </div>
+    <div *ngIf="registerForm.get('name')?.hasError('maxLength') && registerForm.get('name')?.touched" style="color: red;">
+      Characters should not exceed 100.
+    </div>
+  </div><br>
+
+  <div class="form-group">
+    <label for="age"><b>Age</b></label>
+    <input type="text" placeholder="Enter age" name="age" formControlName="age" id="age" required>
+    <div *ngIf="registerForm.get('age')?.hasError('required') && registerForm.get('age')?.touched" style="color: red;">
+      Age is required.
+    </div>
+    <div *ngIf="registerForm.get('age')?.hasError('pattern') && registerForm.get('age')?.touched" style="color: red;">
+      Please enter a valid age.
+    </div>
+  </div><br>
+
+  <div class="form-group">
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter email" name="email" formControlName="email" id="email" required>
+    <div *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched" style="color: red;">
+      Email is required.
+    </div>
+    <div *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched" style="color: red;">
+      Invalid email.
+    </div>
+  </div><br>
+  <div class="form-group">
+    <label for="address"><b>Address</b></label>
+    <input type="text" placeholder="Enter address" name="address" formControlName="address" id="address" required>
+  </div><br>
+  <div class="form-group">
+    <label for="phone-number"><b>Phone Number</b></label>
+    <input type="text" placeholder="Enter Phone number" name="phone-number" formControlName="phone" id="phone-number" required>
+    <div *ngIf="registerForm.get('phone')?.hasError('required') && registerForm.get('phone')?.touched" style="color: red;">
+      Phone number is required.
+    </div>
+    <div *ngIf="registerForm.get('phone')?.hasError('pattern') && registerForm.get('phone')?.touched" style="color: red;">
+      Please enter a valid 10-digit phone number.
+    </div>
+  </div><br>
+  <label for="country">Choose a Country:</label>
+<select id="country" formControlName="country" name="country">
+  <option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</option>
+</select><br>
+
+<input type="radio" id="is-employed" name="r1" formControlName="r1" value="is-employed">
+<label for="is-employed">is-employed</label><br>
+<h5 style="color:#C0F090"><b>Hobbies</b></h5>
+<input type="checkbox" id="hobby1" name="hobby1" formControlName="hobby1" value="video">
+  <label for="hobby1">Playing Video Games</label><br>
+  <input type="checkbox" id="hobby2" name="hobby2" formControlName="hobby2" value="Singing">
+  <label for="hobby2">Singing</label><br>
+  <input type="checkbox" id="hobby3" name="hobby3" formControlName="hobby3" value="Dancing">
+  <label for="hobby3">Dancing</label><br>
+  <input type="checkbox" id="hobby4" name="hobby4" formControlName="hobby4" value="Cards">
+  <label for="hobby4">Cards</label><br>
+  <input type="checkbox" id="hobby5" name="hobby5" formControlName="hobby5" value="TV">
+  <label for="hobby5">Watching TV</label><br><br>
+  <button type="submit" class="registerbtn" >Register</button>
+  
+  </form>
+  
+    
+
